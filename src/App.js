@@ -3,8 +3,8 @@ import "./App.css";
 
 function App() {
   const [flippedCard, setFlippedCard] = useState([]);
-  // const [matched, setMatched] = useState([]);
-  const [matchedId, setMatchedId] = useState("");
+  const [matched, setMatched] = useState([]);
+  // const [matchedId, setMatchedId] = useState("");
 
   const images = ["01", "02", "03", "04", "05", "06"].map((el, index) => ({
     id: index,
@@ -22,8 +22,8 @@ function App() {
     const second = pairOfCards[flippedCard[1]];
 
     if (second && first.id === second.id) {
-      // setMatched([...matched, first.id]);
-      setMatchedId(first.id);
+      setMatched([...matched, first.id]);
+      // setMatchedId(first.id);
     }
 
     if (flippedCard.length === 2) {
@@ -37,10 +37,10 @@ function App() {
         let isFlipped = false;
 
         if (flippedCard.includes(index)) isFlipped = true;
+        if (matched.includes(image.id)) isFlipped = true;
         {
-          /* if (matched.includes(image.id)) isFlipped = true; */
+          /* if (matchedId === image.id) isFlipped = true; */
         }
-        if (matchedId === image.id) isFlipped = true;
 
         return (
           <div
