@@ -25,11 +25,17 @@
   position: relative;
   transform: scale(1);
   cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
 }
 
 .memory-card:active {
   transform: scale(0.97);
   transition: transform 0.2s;
+}
+
+.memory-card.flipped {
+  transform: rotateY(180deg);
 }
 
 .front-face,
@@ -39,4 +45,9 @@
   border-radius: 5px;
   background-color: white;
   position: absolute;
+  backface-visibility: hidden;
+}
+
+.front-face {
+  transform: rotateY(180deg);
 }
